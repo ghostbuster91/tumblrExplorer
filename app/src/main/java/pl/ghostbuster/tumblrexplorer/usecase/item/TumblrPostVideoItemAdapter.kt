@@ -1,14 +1,13 @@
 package pl.ghostbuster.tumblrexplorer.usecase.item
 
-import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.TextView
 import pl.ghostbuster.tumblrexplorer.R
+import pl.ghostbuster.tumblrexplorer.common.Bus
 import pl.ghostbuster.tumblrexplorer.common.extensions.setHtml
 import pl.ghostbuster.tumblrexplorer.common.view.ItemAdapter
+import pl.ghostbuster.tumblrexplorer.usecase.event.OnVideoClickEvent
 import pl.ghostbuster.tumblrexplorer.usecase.model.TumblrPost
 
 class TumblrPostVideoItemAdapter(private val post: TumblrPost.VideoTumblrPost) :
@@ -19,14 +18,14 @@ class TumblrPostVideoItemAdapter(private val post: TumblrPost.VideoTumblrPost) :
     override fun onBind(viewHolder: VH) {
         viewHolder.captionView.setHtml(post.videoCaption)
         viewHolder.itemView.setOnClickListener {
-            startVideoInYoutube(viewHolder.itemView.context)
+            startVideoInYoutube()
         }
         viewHolder.dateView.text = post.date
     }
 
-    private fun startVideoInYoutube(context: Context) {
+    private fun startVideoInYoutube() {
         val videoUrl = post.videoSource.substringAfter("value=\"").substringBefore("\">")
-        context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(videoUrl)))
+        Bus.yell(OnVideoClickEvent(videoUrl))
     }
 
     class VH(itemView: View) : RecyclerView.ViewHolder(itemView) {
