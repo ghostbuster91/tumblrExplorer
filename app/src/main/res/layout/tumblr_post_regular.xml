@@ -10,7 +10,8 @@
         android:id="@+id/tumblr_post_regular_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:textAppearanceLarge"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/black"
         tools:text="Some title"/>
 
     <TextView
@@ -18,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/black"
         tools:text="But for certain data retrieved from your trusted"/>
 
     <TextView
