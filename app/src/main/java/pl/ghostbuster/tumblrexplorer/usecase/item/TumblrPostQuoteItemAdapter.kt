@@ -1,7 +1,6 @@
 package pl.ghostbuster.tumblrexplorer.usecase.item
 
 import android.support.v7.widget.RecyclerView
-import android.text.Html
 import android.view.View
 import android.widget.TextView
 import pl.ghostbuster.tumblrexplorer.R
@@ -15,9 +14,11 @@ class TumblrPostQuoteItemAdapter(private val post: TumblrPost.QuoteTumblrPost) :
     override fun onCreateViewHolder(itemView: View) = VH(itemView)
 
     override fun onBind(viewHolder: VH) {
-        viewHolder.quoteView.setHtml(post.quoteText)
+        viewHolder.quoteView.setHtml(wrapWithQuotes())
         viewHolder.dateView.text = post.date
     }
+
+    private fun wrapWithQuotes() = "&quot;${post.quoteText}&quot;"
 
     class VH(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val quoteView = itemView.findViewById(R.id.tumblr_post_quote) as TextView
