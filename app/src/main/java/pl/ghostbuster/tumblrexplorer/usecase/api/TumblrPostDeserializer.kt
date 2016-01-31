@@ -12,7 +12,7 @@ class TumblrPostDeserializer : JsonDeserializer<TumblrPost> {
         return when (postType) {
             "photo" -> context.deserialize(json, TumblrPost.PhotoTumblrPost::class.java)
             "video" -> context.deserialize(json, TumblrPost.VideoTumblrPost::class.java)
-            "link" -> context.deserialize(json, TumblrPost.LinkTumblrPostid::class.java)
+            "link" -> context.deserialize(json, TumblrPost.LinkTumblrPost::class.java)
             "quote" -> context.deserialize(json, TumblrPost.QuoteTumblrPost::class.java)
             "regular" -> context.deserialize(json, TumblrPost.RegulerTumblrPost::class.java)
             else -> context.deserialize(json, TumblrPost.UnknownType::class.java)

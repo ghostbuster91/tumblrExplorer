@@ -19,9 +19,11 @@ sealed class TumblrPost(val id: String, val date: String) {
                           @SerializedName("photo-url-250") val photoUrl: String) : TumblrPost(id, date)
 
     class VideoTumblrPost(id: String,
-                          date: String) : TumblrPost(id, date)
+                          date: String,
+                          val videoCaption: String,
+                          val videoSource: String) : TumblrPost(id, date)
 
-    class LinkTumblrPostid(id: String,
+    class LinkTumblrPost(id: String,
                            date: String,
                            val linkText: String,
                            val linkUrl: String,
