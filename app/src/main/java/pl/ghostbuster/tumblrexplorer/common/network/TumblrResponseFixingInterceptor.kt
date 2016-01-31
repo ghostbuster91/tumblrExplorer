@@ -11,7 +11,7 @@ class TumblrResponseFixingInterceptor : Interceptor {
         val body = response.body().string()
         val notMalformedBody = body.removePrefix("var tumblr_api_read = ")
         return response.newBuilder()
-                .body(ResponseBody.create(MediaType.parse("Content-Type"), notMalformedBody))
+                .body(ResponseBody.create(MediaType.parse("application/json"), notMalformedBody))
                 .build()
     }
 }
