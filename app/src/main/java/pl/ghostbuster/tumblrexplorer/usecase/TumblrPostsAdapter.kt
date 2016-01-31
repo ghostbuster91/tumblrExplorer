@@ -2,6 +2,7 @@ package pl.ghostbuster.tumblrexplorer.usecase
 
 import pl.ghostbuster.tumblrexplorer.common.view.BaseRecyclerViewAdapter
 import pl.ghostbuster.tumblrexplorer.common.view.ItemAdapter
+import pl.ghostbuster.tumblrexplorer.usecase.item.SeparatorItemAdapter
 import pl.ghostbuster.tumblrexplorer.usecase.item.TumblrPostQuoteItemAdapter
 import pl.ghostbuster.tumblrexplorer.usecase.item.TumblrPostRegularItemAdapter
 import pl.ghostbuster.tumblrexplorer.usecase.model.TumblrPost
@@ -11,7 +12,9 @@ class TumblrPostsAdapter() : BaseRecyclerViewAdapter(arrayListOf<ItemAdapter<*>>
     fun setItems(posts: List<TumblrPost>) {
         adapters.clear()
         adapters.addAll(posts.filter { it is TumblrPost.QuoteTumblrPost || it is TumblrPost.RegulerTumblrPost }
-                .map(postToItemAdapter))
+                .map(postToItemAdapter)
+                .map(toItemWithSeparator)
+                .flatten())
         notifyDataSetChanged()
     }
 
@@ -23,5 +26,9 @@ class TumblrPostsAdapter() : BaseRecyclerViewAdapter(arrayListOf<ItemAdapter<*>>
                 throw RuntimeException()
             }
         }
+    }
+
+    val toItemWithSeparator = { item: ItemAdapter<*> ->
+        listOf(item, SeparatorItemAdapter())
     }
 }
