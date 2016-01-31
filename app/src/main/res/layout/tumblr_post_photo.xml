@@ -3,7 +3,7 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:layout_margin="16dp"
+              android:layout_margin="@dimen/medium_margin"
               android:orientation="vertical">
 
     <ImageView
@@ -17,7 +17,7 @@
         android:id="@+id/tumblr_post_photo_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/medium_margin"
         tools:text="A new approach to software development"/>
 
     <TextView
