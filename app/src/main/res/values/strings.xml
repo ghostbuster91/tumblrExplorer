@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TumblrExplorer</string>
+    <string name="home_activity_search_hint">Search</string>
 </resources>
