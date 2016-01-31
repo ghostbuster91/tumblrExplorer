@@ -28,7 +28,7 @@ class TumblrPostsAdapter() : BaseRecyclerViewAdapter(arrayListOf<ItemAdapter<*>>
         }
     }
 
-    val toItemWithSeparator = { item: ItemAdapter<*> ->
+    private val toItemWithSeparator = { item: ItemAdapter<*> ->
         listOf(item, SeparatorItemAdapter())
     }
 }
