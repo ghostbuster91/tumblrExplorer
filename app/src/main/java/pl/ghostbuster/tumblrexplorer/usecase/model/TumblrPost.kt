@@ -26,4 +26,6 @@ sealed class TumblrPost(val id: String, val date: String) {
                            val linkText: String,
                            val linkUrl: String,
                            val linkDescritpion: String) : TumblrPost(id, date)
+
+    class UnknownType(id: String, date: String) : TumblrPost(id, date)
 }

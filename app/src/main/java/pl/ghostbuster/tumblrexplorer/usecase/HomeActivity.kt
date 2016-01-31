@@ -23,17 +23,17 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_activity)
-        inputEditText.addOnTextChangedListener {
-            onTextChanged(it)
-        }
+        inputEditText.addOnTextChangedListener(onTextChanged)
     }
 
-    private fun onTextChanged(text: String) {
+    private val onTextChanged = { text: String ->
         Log.i("textWatcher", "textChanged")
-        tumblrService.call(text)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(onSuccess, onError)
+        if (text.isNotEmpty()) {
+            tumblrService.call(text)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(onSuccess, onError)
+        }
     }
 
     private val onSuccess: (TumblrResponseWrapper) -> Unit = {
