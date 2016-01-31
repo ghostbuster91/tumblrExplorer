@@ -1,4 +1,4 @@
-package pl.ghostbuster.tumblrexplorer.extensions
+package pl.ghostbuster.tumblrexplorer.common.extensions
 
 import android.app.Activity
 import android.support.annotation.IdRes
