@@ -18,6 +18,7 @@ import pl.ghostbuster.tumblrexplorer.usecase.api.TumblrApi
 import pl.ghostbuster.tumblrexplorer.usecase.api.TumblrService
 import pl.ghostbuster.tumblrexplorer.usecase.event.OnLinkClickEvent
 import pl.ghostbuster.tumblrexplorer.usecase.event.OnVideoClickEvent
+import pl.ghostbuster.tumblrexplorer.usecase.model.TumblrPost
 import pl.ghostbuster.tumblrexplorer.usecase.model.TumblrResponseWrapper
 import rx.Subscription
 import rx.android.schedulers.AndroidSchedulers
@@ -51,8 +52,9 @@ class HomeActivity : AppCompatActivity(), Bus.Passenger {
         }
     }
 
+    @Suppress("UNCHECKED_CAST")
     private val onSuccess: (TumblrResponseWrapper) -> Unit = {
-        postsAdapter.setItems(it.posts)
+        postsAdapter.setItems(it.posts as List<TumblrPost>)
     }
 
     private val onError: (Throwable) -> Unit = {

@@ -22,9 +22,6 @@ class TumblrPostsAdapter() : BaseRecyclerViewAdapter(arrayListOf<ItemAdapter<*>>
             is TumblrPost.PhotoTumblrPost -> TumblrPostPhotoItemAdapter(post)
             is TumblrPost.VideoTumblrPost -> TumblrPostVideoItemAdapter(post)
             is TumblrPost.LinkTumblrPost -> TumblrPostLinkItemAdapter(post)
-            else -> {
-                throw RuntimeException()
-            }
         }
     }
 

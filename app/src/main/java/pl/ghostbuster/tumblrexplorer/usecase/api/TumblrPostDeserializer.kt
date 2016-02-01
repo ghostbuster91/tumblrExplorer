@@ -7,7 +7,7 @@ import pl.ghostbuster.tumblrexplorer.usecase.model.TumblrPost
 import java.lang.reflect.Type
 
 class TumblrPostDeserializer : JsonDeserializer<TumblrPost> {
-    override fun deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): TumblrPost {
+    override fun deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): TumblrPost? {
         val postType = json.asJsonObject.get("type").asString
         return when (postType) {
             "photo" -> context.deserialize(json, TumblrPost.PhotoTumblrPost::class.java)
@@ -15,7 +15,7 @@ class TumblrPostDeserializer : JsonDeserializer<TumblrPost> {
             "link" -> context.deserialize(json, TumblrPost.LinkTumblrPost::class.java)
             "quote" -> context.deserialize(json, TumblrPost.QuoteTumblrPost::class.java)
             "regular" -> context.deserialize(json, TumblrPost.RegulerTumblrPost::class.java)
-            else -> context.deserialize(json, TumblrPost.UnknownType::class.java)
+            else -> null
         }
     }
 }
