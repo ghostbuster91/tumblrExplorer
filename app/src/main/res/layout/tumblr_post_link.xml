@@ -3,13 +3,16 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:layout_margin="@dimen/medium_margin"
+              android:background="@drawable/click_indicator"
               android:orientation="vertical">
 
     <TextView
         android:id="@+id/tumblr_post_link_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/medium_margin"
+        android:layout_marginRight="@dimen/medium_margin"
+        android:layout_marginTop="@dimen/medium_margin"
         android:textAppearance="?android:textAppearanceMedium"
         android:textColor="@color/colorPrimary"
         tools:text="The time has come to make a choice...."/>
@@ -26,6 +29,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
+        android:layout_marginBottom="@dimen/medium_margin"
+        android:layout_marginLeft="@dimen/medium_margin"
+        android:layout_marginRight="@dimen/medium_margin"
         android:textColor="@color/darkGray"
         tools:text="March 13"/>
 
