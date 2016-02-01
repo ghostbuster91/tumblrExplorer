@@ -46,7 +46,7 @@ class HomeActivity : AppCompatActivity(), Bus.Passenger {
     private val onTextChanged = { text: String ->
         if (text.isNotEmpty()) {
             lastLoadedPostIndex = 0
-            callApiForPosts(text, onFirstPageSuccess)
+            callPostApi(text, onFirstPageSuccess)
         }
     }
 
@@ -55,7 +55,7 @@ class HomeActivity : AppCompatActivity(), Bus.Passenger {
         lastLoadedPostIndex += POSTS_PER_PAGE
     }
 
-    private fun callApiForPosts(userName: String, onSuccess: (TumblrResponseWrapper) -> Unit) {
+    private fun callPostApi(userName: String, onSuccess: (TumblrResponseWrapper) -> Unit) {
         subscription?.unsubscribe()
         subscription = tumblrService.call(userName, lastLoadedPostIndex)
                 .subscribeOn(Schedulers.io())
@@ -90,7 +90,7 @@ class HomeActivity : AppCompatActivity(), Bus.Passenger {
 
     @Subscribe
     fun onEvent(event: LoadMoreEvent) {
-        callApiForPosts(inputEditText.text.toString(), onNextPageSuccess)
+        callPostApi(inputEditText.text.toString(), onNextPageSuccess)
     }
 
     private val onNextPageSuccess = { response: TumblrResponseWrapper ->
