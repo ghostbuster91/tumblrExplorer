@@ -11,8 +11,7 @@ class TumblrPostsAdapter() : BaseRecyclerViewAdapter(arrayListOf<ItemAdapter<*>>
         adapters.clear()
         adapters.addAll(posts.filter(isTypeSupported)
                 .map(postToItemAdapter)
-                .map(toItemWithSeparator)
-                .flatten())
+                .flatMap(toItemWithSeparator))
         notifyDataSetChanged()
     }
 
