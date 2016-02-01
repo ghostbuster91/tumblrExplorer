@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.TextView
 import pl.ghostbuster.tumblrexplorer.R
 import pl.ghostbuster.tumblrexplorer.common.extensions.setHtml
+import pl.ghostbuster.tumblrexplorer.common.extensions.setVisibility
 import pl.ghostbuster.tumblrexplorer.common.view.ItemAdapter
 import pl.ghostbuster.tumblrexplorer.usecase.model.TumblrPost
 
@@ -15,11 +16,7 @@ class TumblrPostRegularItemAdapter(private val post: TumblrPost.RegulerTumblrPos
 
     override fun onBind(viewHolder: TumblrPostRegularItemAdapter.VH) {
         viewHolder.titleView.setHtml(post.regularTitle)
-        viewHolder.bodyView.visibility = if (post.regularBody.isEmpty()) {
-            View.VISIBLE
-        } else {
-            View.GONE
-        }
+        viewHolder.bodyView.setVisibility(post.regularBody.isNotEmpty())
         viewHolder.bodyView.setHtml(post.regularBody)
         viewHolder.dateView.text = post.date
     }

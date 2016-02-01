@@ -8,19 +8,11 @@ import pl.ghostbuster.tumblrexplorer.usecase.model.TumblrPost
 class TumblrPostsAdapter() : BaseRecyclerViewAdapter(arrayListOf<ItemAdapter<*>>()) {
 
     fun setItems(posts: List<TumblrPost>) {
+        val elements = posts.map(postToItemAdapter)
+                .flatMap(toItemWithSeparator)
         adapters.clear()
-        adapters.addAll(posts.filter(isTypeSupported)
-                .map(postToItemAdapter)
-                .flatMap(toItemWithSeparator))
+        adapters.addAll(elements)
         notifyDataSetChanged()
-    }
-
-    //TODO: remove when all types will be supported
-    private val isTypeSupported = { post: TumblrPost ->
-        post is TumblrPost.QuoteTumblrPost
-                || post is TumblrPost.RegulerTumblrPost
-                || post is TumblrPost.PhotoTumblrPost
-                || post is TumblrPost.VideoTumblrPost
     }
 
     private val postToItemAdapter = { post: TumblrPost ->
@@ -29,6 +21,7 @@ class TumblrPostsAdapter() : BaseRecyclerViewAdapter(arrayListOf<ItemAdapter<*>>
             is TumblrPost.RegulerTumblrPost -> TumblrPostRegularItemAdapter(post)
             is TumblrPost.PhotoTumblrPost -> TumblrPostPhotoItemAdapter(post)
             is TumblrPost.VideoTumblrPost -> TumblrPostVideoItemAdapter(post)
+            is TumblrPost.LinkTumblrPost -> TumblrPostLinkItemAdapter(post)
             else -> {
                 throw RuntimeException()
             }

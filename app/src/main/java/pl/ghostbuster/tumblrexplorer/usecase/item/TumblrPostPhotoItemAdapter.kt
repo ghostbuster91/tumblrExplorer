@@ -7,6 +7,7 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import pl.ghostbuster.tumblrexplorer.R
 import pl.ghostbuster.tumblrexplorer.common.extensions.setHtml
+import pl.ghostbuster.tumblrexplorer.common.extensions.setVisibility
 import pl.ghostbuster.tumblrexplorer.common.view.ItemAdapter
 import pl.ghostbuster.tumblrexplorer.usecase.model.TumblrPost
 
@@ -17,11 +18,7 @@ class TumblrPostPhotoItemAdapter(private val post: TumblrPost.PhotoTumblrPost) :
 
     override fun onBind(viewHolder: VH) {
         Glide.with(viewHolder.itemView.context).load(post.photoUrl).into(viewHolder.imageView)
-        viewHolder.titleView.visibility = if (post.photoCaption.isNotEmpty()) {
-            View.VISIBLE
-        } else {
-            View.GONE
-        }
+        viewHolder.titleView.setVisibility(post.photoCaption.isNotEmpty())
         viewHolder.titleView.setHtml(post.photoCaption)
         viewHolder.dateView.text = post.date
     }
