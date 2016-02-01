@@ -10,7 +10,7 @@ import retrofit2.RxJavaCallAdapterFactory
 
 object TumblrRetrofitProvider {
 
-    val testRetrofit: Retrofit? = null
+    var testRetrofit: Lazy<Retrofit>? = null
 
     private val retrofit by lazy {
         Retrofit.Builder()
@@ -26,6 +26,6 @@ object TumblrRetrofitProvider {
     }
 
     fun get(): Retrofit {
-        return testRetrofit ?: retrofit
+        return testRetrofit?.value ?: retrofit
     }
 }
