@@ -27,7 +27,7 @@ import rx.schedulers.Schedulers
 
 class HomeActivity : AppCompatActivity(), Bus.Passenger {
 
-    private val tumblrService = TumblrService(TumblrApi.get())
+    private val tumblrService by lazy { TumblrService(TumblrApi.get()) }
     private val inputEditText by find<EditText>(R.id.home_activity_input)
     private val resultsContainer by find<RecyclerView>(R.id.home_activity_results_container)
     private val postsAdapter = TumblrPostsAdapter()
