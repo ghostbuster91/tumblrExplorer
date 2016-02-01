@@ -35,8 +35,9 @@ android {
 dependencies {
     testCompile 'junit:junit:4.12'
     compile "com.android.support:appcompat-v7:$android_support_version"
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile "com.android.support:recyclerview-v7:$android_support_version"
+    compile "com.android.support:design:$android_support_version"
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile 'com.squareup.retrofit2:retrofit:2.0.0-beta3'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.0.0-beta3'
     compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta3'
