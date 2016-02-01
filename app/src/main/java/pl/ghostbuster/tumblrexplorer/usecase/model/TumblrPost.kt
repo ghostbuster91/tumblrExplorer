@@ -24,10 +24,10 @@ sealed class TumblrPost(val id: String, val date: String) {
                           val videoSource: String) : TumblrPost(id, date)
 
     class LinkTumblrPost(id: String,
-                           date: String,
-                           val linkText: String,
-                           val linkUrl: String,
-                           val linkDescritpion: String) : TumblrPost(id, date)
+                         date: String,
+                         val linkText: String,
+                         val linkUrl: String,
+                         val linkDescritpion: String) : TumblrPost(id, date)
 
     class UnknownType(id: String, date: String) : TumblrPost(id, date)
 }
