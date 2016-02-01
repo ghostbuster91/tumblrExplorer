@@ -10,7 +10,7 @@ sealed class TumblrPost(val id: String, val date: String) {
 
     class RegulerTumblrPost(id: String,
                             date: String,
-                            val regularTitle: String,
+                            val regularTitle: String?,
                             val regularBody: String) : TumblrPost(id, date)
 
     class PhotoTumblrPost(id: String,

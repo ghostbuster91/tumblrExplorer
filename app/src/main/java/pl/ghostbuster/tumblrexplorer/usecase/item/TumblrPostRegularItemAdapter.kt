@@ -15,7 +15,9 @@ class TumblrPostRegularItemAdapter(private val post: TumblrPost.RegulerTumblrPos
     override fun onCreateViewHolder(itemView: View) = VH(itemView)
 
     override fun onBind(viewHolder: TumblrPostRegularItemAdapter.VH) {
-        viewHolder.titleView.setHtml(post.regularTitle)
+        if (post.regularTitle != null) {
+            viewHolder.titleView.setHtml(post.regularTitle)
+        }
         viewHolder.bodyView.setVisibility(post.regularBody.isNotEmpty())
         viewHolder.bodyView.setHtml(post.regularBody)
         viewHolder.dateView.text = post.date

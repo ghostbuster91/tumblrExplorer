@@ -5,13 +5,8 @@ import rx.Observable
 
 class TumblrService(val tumblrApi: TumblrApi) {
 
-    fun call(userName: String): Observable<TumblrResponseWrapper> {
-        return tumblrApi.call(url.replace("{userName}", userName))
-                .map(removeNullItems)
-    }
-
-    private val removeNullItems = { it: TumblrResponseWrapper ->
-        it.copy(posts = it.posts.filter { it != null })
+    fun call(userName: String, startPost: Int): Observable<TumblrResponseWrapper> {
+        return tumblrApi.call(url.replace("{userName}", userName), startPost)
     }
 
     companion object {
