@@ -17,13 +17,11 @@ class TumblrPostVideoItemAdapter(private val post: TumblrPost.VideoTumblrPost) :
 
     override fun onBind(viewHolder: VH) {
         viewHolder.captionView.setHtml(post.videoCaption)
-        viewHolder.itemView.setOnClickListener {
-            startVideoInYoutube()
-        }
+        viewHolder.itemView.setOnClickListener(yellOnVideoClickEvent)
         viewHolder.dateView.text = post.date
     }
 
-    private fun startVideoInYoutube() {
+    private val yellOnVideoClickEvent = { v: View ->
         val videoUrl = post.videoSource.substringAfter("value=\"").substringBefore("\">")
         Bus.yell(OnVideoClickEvent(videoUrl))
     }
