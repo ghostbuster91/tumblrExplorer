@@ -8,7 +8,6 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import pl.ghostbuster.tumblrexplorer.R
 import pl.ghostbuster.tumblrexplorer.functional.extensions.hasText
-import pl.ghostbuster.tumblrexplorer.functional.extensions.typeText
 import pl.ghostbuster.tumblrexplorer.functional.module.TestModulesInjector
 import pl.ghostbuster.tumblrexplorer.usecase.HomeActivity
 

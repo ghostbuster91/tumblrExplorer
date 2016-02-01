@@ -5,7 +5,7 @@ import pl.ghostbuster.tumblrexplorer.usecase.model.TumblrResponseWrapper
 
 object TumblrResponseFactory {
 
-    fun createResponseWithQuotePost(quoteText:String) = TumblrResponseWrapper(
+    fun createResponseWithQuotePost(quoteText: String) = TumblrResponseWrapper(
             postsStart = 0,
             postsTotal = 1,
             posts = listOf(TumblrPost.QuoteTumblrPost(

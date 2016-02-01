@@ -24,7 +24,7 @@ class QuotePostHomeActivityTestCase {
     }
 
     @Test
-    fun shouldDisplayQuotePostAfterTypingInQuery() {
+    fun shouldDisplayQuotePostAfterTypingInputEditText() {
         R.id.home_activity_input typeText "a"
         "\"$QUOTE_TEXT\"".assertIsDisplayed()
     }

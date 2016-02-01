@@ -1,6 +1,5 @@
 package pl.ghostbuster.tumblrexplorer.functional.module
 
-import pl.ghostbuster.tumblrexplorer.functional.QuotePostHomeActivityTestCase
 import pl.ghostbuster.tumblrexplorer.functional.factory.TumblrResponseFactory
 import pl.ghostbuster.tumblrexplorer.usecase.api.TumblrApi
 import pl.ghostbuster.tumblrexplorer.usecase.model.TumblrResponseWrapper
