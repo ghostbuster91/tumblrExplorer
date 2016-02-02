@@ -4,6 +4,7 @@ import pl.ghostbuster.tumblrexplorer.functional.factory.TumblrResponseFactory
 import pl.ghostbuster.tumblrexplorer.usecase.api.TumblrApi
 import pl.ghostbuster.tumblrexplorer.usecase.model.TumblrResponseWrapper
 import rx.Observable
+import rx.Single
 
 object TestModules {
 
@@ -13,8 +14,8 @@ object TestModules {
 
     fun creaeteTumblrApiWithQuotePostResponse(quoteText: String): TumblrApi {
         return object : TumblrApi {
-            override fun call(baseUrl: String, startPost: Int): Observable<TumblrResponseWrapper> {
-                return Observable.just(TumblrResponseFactory.createResponseWithQuotePost(quoteText))
+            override fun call(baseUrl: String, startPost: Int): Single<TumblrResponseWrapper> {
+                return Single.just(TumblrResponseFactory.createResponseWithQuotePost(quoteText))
             }
         }
     }
